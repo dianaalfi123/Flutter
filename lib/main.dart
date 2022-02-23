@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
+    // final wordPair = WordPair.random();
     //basic
     return MaterialApp(
         title: 'Welcome to Flutter',
@@ -19,17 +19,21 @@ class MyApp extends StatelessWidget {
             //title yang muncul adalah yang ini
             title : const Text('Welcome To Flutter Start'),
           ),
-          //random word show 1
-          body: Center(
-              child : Text(wordPair.asPascalCase)
+          //random word show 2 with class RandomWords extends satatefullwidget
+          body: const Center(
+            child: RandomWords(),
           ),
+          //random word show 1
+          // body: Center(
+          //     child : Text(wordPair.asPascalCase)
+          // ),
           //basic
           // body:const Center(
           //     child : Text('Hello World')
           // ),
         ),
     );
-
+    //basic event create new
     // return MaterialApp(
     //   title: 'Flutter Demo',
     //   theme: ThemeData(
@@ -40,6 +44,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class RandomWords extends StatefulWidget{
+  const RandomWords({Key?key}):super(key:key);
+
+  @override
+  _RandomWordsState  createState() => _RandomWordsState ();
+}
+
+//to random word show 2 with class RandomWords extends StatefullWidget
+class _RandomWordsState  extends State<RandomWords>{
+  @override
+  Widget build(BuildContext context){
+    final wordPair = WordPair.random();
+    return Text(wordPair.asPascalCase);
+  }
+}
+
+//basic event create new
 // class MyHomePage extends StatefulWidget {
 //   const MyHomePage({Key? key, required this.title}) : super(key: key);
 //
