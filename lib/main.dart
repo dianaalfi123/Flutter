@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final wordPair = WordPair.random();
     //basic
     return MaterialApp(
         title: 'Welcome to Flutter',
@@ -18,9 +19,14 @@ class MyApp extends StatelessWidget {
             //title yang muncul adalah yang ini
             title : const Text('Welcome To Flutter Start'),
           ),
-          body:const Center(
-              child : Text('Hello World')
+          //random word show 1
+          body: Center(
+              child : Text(wordPair.asPascalCase)
           ),
+          //basic
+          // body:const Center(
+          //     child : Text('Hello World')
+          // ),
         ),
     );
 
