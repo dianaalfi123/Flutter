@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'navBar.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,23 +14,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // final wordPair = WordPair.random();
     // materialApp with show scrolling bar listview
-    return MaterialApp(
-      title: "Listview with scrollbar",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Listview Random Words with scrollbar'),
-        ),
-        body:const Center(
-          child: RandomWords(),
-        ),
-      ),
-    );
+    // return MaterialApp(
+    //   title: "Listview with scrollbar",
+    //   home: Scaffold(
+    //     appBar: AppBar(
+    //       title: const Text('Listview Random Words with scrollbar'),
+    //     ),
+    //     body:const Center(
+    //       child: RandomWords(),
+    //     ),
+    //   ),
+    // );
     //basic
     //material infinite scrolling listview
-    // return const MaterialApp(
-    //   title: 'Startup name generator',
-    //   home: RandomWords(),
-    // );
+    return const MaterialApp(
+
+      title: 'Startup name generator',
+      home: RandomWords(),
+    );
     //material basic
     // return MaterialApp(
     //     title: 'Welcome to Flutter',
@@ -77,45 +80,52 @@ class _RandomWordsState  extends State<RandomWords>{
 
   @override
   Widget build(BuildContext context){
-
-    return LayoutBuilder(
+    return Scaffold(
+        drawer:navBar(),
+      appBar: AppBar(
+        title : const Text('Random Word with scrollbar'),
+      ),
+      body :  LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       return Row(
-          children: <Widget>[
-      SizedBox(
-      width: constraints.maxWidth,
-          // Only one scroll position can be attached to the
-          // PrimaryScrollController if using Scrollbars. Providing a
-          // unique scroll controller to this scroll view prevents it
-          // from attaching to the PrimaryScrollController.
-          child: Scrollbar(
-            isAlwaysShown: true,
-            controller: _firstController,
-            child: ListView.builder(
-              controller: _firstController,
-              itemCount: 50,
-              padding: const EdgeInsets.all(16.0),
-              itemBuilder: (context,i){
-                if(i.isOdd) return const Divider();
+        children: <Widget>[
+          SizedBox(
+              width: constraints.maxWidth,
+              // Only one scroll position can be attached to the
+              // PrimaryScrollController if using Scrollbars. Providing a
+              // unique scroll controller to this scroll view prevents it
+              // from attaching to the PrimaryScrollController.
+              child: Scrollbar(
+                isAlwaysShown: true,
+                controller: _firstController,
+                child: ListView.builder(
+                  controller: _firstController,
+                  itemCount: 50,
+                  padding: const EdgeInsets.all(16.0),
+                  itemBuilder: (context,i){
+                    if(i.isOdd) return const Divider();
 
-                final index = i~/2;
-                if(index >= _suggestions.length){
-                  _suggestions.addAll(generateWordPairs().take(10));
-                }
-                return ListTile(
-                  title : Text(
-                    _suggestions[index].asPascalCase,
-                    style: _biggerFont,
-                  ),
-                );
+                    final index = i~/2;
+                    if(index >= _suggestions.length){
+                      _suggestions.addAll(generateWordPairs().take(10));
+                    }
+                    return ListTile(
+                      title : Text(
+                        _suggestions[index].asPascalCase,
+                        style: _biggerFont,
+                      ),
+                    );
 
-              },
-            ),
-          )),
+                  },
+                ),
+              )),
 
-          ],
+        ],
       );
-        });
+    })
+
+    );
+
   }
 }
 
