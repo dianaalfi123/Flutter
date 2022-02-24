@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'navBar.dart';
+import 'route/route.dart' as route;
 
 void main() {
   runApp(const MyApp());
@@ -25,13 +26,21 @@ class MyApp extends StatelessWidget {
     //     ),
     //   ),
     // );
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+      ),
+      onGenerateRoute: route.controller,
+      initialRoute: route.loginPage,
+    );
     //basic
     //material infinite scrolling listview
-    return const MaterialApp(
-
-      title: 'Startup name generator',
-      home: RandomWords(),
-    );
+    // return const MaterialApp(
+    //
+    //   title: 'Startup name generator',
+    //   home: RandomWords(),
+    // );
     //material basic
     // return MaterialApp(
     //     title: 'Welcome to Flutter',

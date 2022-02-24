@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_flutter/route/route.dart' as route;
 
 class navBar extends StatelessWidget{
   @override
@@ -31,7 +32,7 @@ class navBar extends StatelessWidget{
             ListTile(
               leading:Icon(Icons.home),
               title: Text('Home'),
-              onTap: () => null,
+              onTap: () => Navigator.pushNamed(context, route.homePage),
             ),
             ListTile(
               leading: Icon(Icons.person),
@@ -62,12 +63,12 @@ class navBar extends StatelessWidget{
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Setting'),
-              onTap: () => null,
+              onTap: () => Navigator.pushNamed(context, route.settingsPage),
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Exit'),
-              onTap: () => null,
+              onTap: () => Navigator.pushNamed(context, route.loginPage),
             ),
           ],
         ),
