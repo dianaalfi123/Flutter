@@ -35,6 +35,11 @@ class navBar extends StatelessWidget{
               onTap: () => Navigator.pushNamed(context, route.homePage),
             ),
             ListTile(
+              leading:Icon(Icons.list),
+              title: Text('Random Words'),
+              onTap: () => Navigator.pushNamed(context, route.randomWordsPage),
+            ),
+            ListTile(
               leading: Icon(Icons.person),
               title: Text('Profile'),
               onTap: () => null,
@@ -42,7 +47,7 @@ class navBar extends StatelessWidget{
             ListTile(
               leading: Icon(Icons.notifications),
               title: Text('Notification'),
-              onTap: () => null,
+              onTap: () => Navigator.pushNamed(context, route.notificationsPage),
               trailing: ClipOval(
                 child:Container(
                   color: Colors.red,

@@ -12,15 +12,39 @@ class SettingsPage extends StatelessWidget{
       drawer:navBar(),
       appBar: AppBar(
         title: const Text('Settings'),
+        centerTitle:false,
+        backgroundColor:Colors.cyan[900],
+        //shadow bottom
+        elevation:20.3,
+        actions: [
+          Center(
+            child: Text('+1'),
+          ),
+          IconButton(
+            icon : Icon(Icons.notifications),
+            onPressed: () => Navigator.pushNamed(context,route.notificationsPage),
+          ),
+        ],
       ),
       body: Center(
         child : ElevatedButton(
             child: Text(
-              'Settings',
+              'Home',
               style: TextStyle(color: Colors.white),
             ),
-            onPressed: () => Navigator.pushNamed(context, route.settingsPage),
-            style :style
+            onPressed: () => Navigator.pushNamed(context, route.homePage),
+          style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all(Colors.black),
+            backgroundColor: MaterialStateProperty.all(Colors.cyan.shade900),
+            textStyle: MaterialStateProperty.all(
+                const TextStyle(fontSize: 12)
+            ),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+          ),
         ),
       ),
     );
